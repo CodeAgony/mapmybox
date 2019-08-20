@@ -2,9 +2,9 @@ import React from 'react';
 import Search from './Search';
 import OutputItem from './OutputItem';
 
-const SideBar = () => {
+const SideBar = props => {
   return (
-    <div className="sidebar">
+    <div className={props.isVisible ? 'sidebar sidebar-visible' : 'sidebar'}>
       <h3>Vinnytsia</h3>
       <Search />
       <OutputItem />
