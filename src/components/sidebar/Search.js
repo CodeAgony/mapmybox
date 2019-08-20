@@ -4,7 +4,11 @@ const Search = () => {
   return (
     <div className="search">
       <form>
-        <input type="text" placeholder="Search" className="search-input" />
+        <input
+          type="text"
+          placeholder="Filter places"
+          className="search-input"
+        />
       </form>
     </div>
   );

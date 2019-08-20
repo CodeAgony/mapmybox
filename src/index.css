@@ -34,6 +34,13 @@ body {
 	background: var(--background-gray-transparent);
 	border-radius: 0 0.8rem 0.8rem 0;
 }
+
+.search-input {
+	width: 8rem;
+	margin: 0 0.5rem 0 0.5rem;
+	border-radius: 0.3rem
+}
+
 /* .mapboxgl-canvas {
 	position: absolute;
 	top: 0;
