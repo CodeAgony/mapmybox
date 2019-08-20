@@ -10,7 +10,6 @@ const MapContainer = () => {
 
   return (
     <div>
-      <h1>map here</h1>
       <Map
         style="mapbox://styles/mapbox/streets-v9"
         center={[28.4685, 49.2344]}
