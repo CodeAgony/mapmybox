@@ -6,7 +6,8 @@ body {
 	margin: 0;
 	padding: 0;
 	width: 100vw;
-	height: 100vh
+	height: 100vh;
+	box-sizing: border-box;
 }
 
 .sidebar-button {
@@ -33,6 +34,11 @@ body {
 	z-index: 10;
 	background: var(--background-gray-transparent);
 	border-radius: 0 0.8rem 0.8rem 0;
+}
+
+.sidebar h3 {
+	margin: 1rem 0;
+	align-self: center;
 }
 
 .search-input {
