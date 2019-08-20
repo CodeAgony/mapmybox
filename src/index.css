@@ -5,6 +5,19 @@ body {
 	height: 100vh
 }
 
+.sidebar-button {
+	display: inline;
+	position: absolute;
+	top: 0;
+	z-index: 10;
+	background: rgba(0,0,10,0.4);
+	border-radius: 0px 0px 5px 0px;
+}
+
+.sidebar-button i {
+	margin: 0.7rem;
+}
+
 /* .mapboxgl-canvas {
 	position: absolute;
 	top: 0;
