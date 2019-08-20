@@ -57,12 +57,14 @@ body {
 	width: 8rem;
 	padding: 0.5rem 0 0.5rem 0;
 	text-align: start;
+	border: 1px transparent;
 	border-bottom: 1px solid white;
-	border-radius: 3px;
+	border-radius: 2px;
 }
 
 .output-item:hover {
-	border: 2px solid purple;
+	box-shadow: 0 0 0 2px purple;
+
 }
 
 /* .mapboxgl-canvas {
