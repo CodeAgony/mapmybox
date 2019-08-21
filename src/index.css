@@ -1,8 +1,88 @@
+:root {
+	--background-gray-transparent: rgba(0,0,10,0.5);
+	--background-gray-hover: rgba(0,0,10,0.7);
+}
+
+div, h1, h2, h3, h4, h5, h6, p {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 body {
 	margin: 0;
 	padding: 0;
 	width: 100vw;
-	height: 100vh
+	height: 100vh;
+	box-sizing: border-box;
+}
+
+.sidebar-button {
+	display: inline;
+	position: absolute;
+	top: 0;
+	z-index: 10;
+	background: var(--background-gray-transparent);
+	border-radius: 0 0 0.5rem 0;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+.sidebar-button:hover {
+	background: var(--background-gray-hover);
+}
+
+.sidebar-button i {
+	margin: 0.7rem;
+}
+
+.sidebar {
+	position: absolute;
+	top: 3rem;
+	left: -10rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0.7rem;
+	z-index: 10;
+	color: white;
+	background: var(--background-gray-transparent);
+	border-radius: 0 0.8rem 0.8rem 0;
+	transition: left 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+.sidebar:hover {
+	background: var(--background-gray-hover);
+}
+
+.sidebar-visible {
+	left: 0;
+}
+
+.sidebar h3 {
+	margin: 1rem 0;
+	align-self: center;
+}
+
+.search-input {
+	width: 8rem;
+	margin-bottom: 0.2rem;
+	padding: 0.2rem;
+	border-radius: 0.3rem
+}
+
+.output-item {
+	width: 8rem;
+	padding: 0.5rem 0 0.5rem 0;
+	text-align: start;
+	border: 1px transparent;
+	border-bottom: 1px solid white;
+	border-radius: 2px;
+}
+
+.output-item:hover {
+	box-shadow: 0 0 0 2px purple;
+
 }
 
 /* .mapboxgl-canvas {

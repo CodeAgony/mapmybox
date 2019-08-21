@@ -2,12 +2,12 @@ import React from 'react';
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-const MapContainer = () => {
-  const Map = ReactMapboxGl({
-    accessToken:
-      'pk.eyJ1IjoiY29kZWFnb255IiwiYSI6ImNqemg5NHE4dDBiMGczbG16cDhyb3Q1NTYifQ.h_WYdEWMtkuogpC9_l89SQ'
-  });
+const Map = ReactMapboxGl({
+  accessToken:
+    'pk.eyJ1IjoiY29kZWFnb255IiwiYSI6ImNqemg5NHE4dDBiMGczbG16cDhyb3Q1NTYifQ.h_WYdEWMtkuogpC9_l89SQ'
+});
 
+const MapContainer = () => {
   return (
     <div>
       <Map
