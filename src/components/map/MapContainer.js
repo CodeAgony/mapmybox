@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
+import ReactMapboxGl, { Layer, Marker } from 'react-mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 const Map = ReactMapboxGl({
@@ -12,7 +12,7 @@ const MapContainer = ({ places }) => {
   const markers =
     places !== null &&
     places.features.map(feature => (
-      <Feature
+      <Marker
         key={feature.id}
         coordinates={[feature.center[0], feature.center[1]]}
       />
@@ -28,7 +28,11 @@ const MapContainer = ({ places }) => {
           width: '100vw'
         }}
       >
-        <Layer type="symbol" id="marker" layout={{ 'icon-image': 'rocket-15' }}>
+        <Layer
+          type="symbol"
+          id="marker"
+          layout={{ 'icon-image': 'restaurant-15' }}
+        >
           {markers}
         </Layer>
       </Map>
