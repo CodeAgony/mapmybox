@@ -21,7 +21,7 @@ function App() {
   return (
     <div className="App">
       <SideBarButton isVisible={isVisible} setVisibility={setVisibility} />
-      <SideBar isVisible={isVisible} />
+      <SideBar isVisible={isVisible} places={places} />
       <MapContainer places={places} />
     </div>
   );
