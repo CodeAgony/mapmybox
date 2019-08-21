@@ -23,6 +23,12 @@ body {
 	z-index: 10;
 	background: var(--background-gray-transparent);
 	border-radius: 0 0 0.5rem 0;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+.sidebar-button:hover {
+	background: var(--background-gray-hover);
 }
 
 .sidebar-button i {
