@@ -1,5 +1,6 @@
 :root {
-	--background-gray-transparent: rgba(0,0,10,0.4);
+	--background-gray-transparent: rgba(0,0,10,0.5);
+	--background-gray-hover: rgba(0,0,10,0.7);
 }
 
 div, h1, h2, h3, h4, h5, h6, p {
@@ -42,10 +43,16 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	padding: 0 0.7rem 0 0.7rem;
+	padding: 0.7rem;
 	z-index: 10;
+	color: white;
 	background: var(--background-gray-transparent);
 	border-radius: 0 0.8rem 0.8rem 0;
+	transition: left 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+
+.sidebar:hover {
+	background: var(--background-gray-hover);
 }
 
 .sidebar-visible {
