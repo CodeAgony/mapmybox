@@ -7,7 +7,17 @@ const Map = ReactMapboxGl({
     'pk.eyJ1IjoiY29kZWFnb255IiwiYSI6ImNqemg5NHE4dDBiMGczbG16cDhyb3Q1NTYifQ.h_WYdEWMtkuogpC9_l89SQ'
 });
 
-const MapContainer = () => {
+const MapContainer = ({ places }) => {
+  // Add marker for each place
+  const markers =
+    places !== null &&
+    places.features.map(feature => (
+      <Feature
+        key={feature.id}
+        coordinates={[feature.center[0], feature.center[1]]}
+      />
+    ));
+
   return (
     <div>
       <Map
@@ -19,7 +29,7 @@ const MapContainer = () => {
         }}
       >
         <Layer type="symbol" id="marker" layout={{ 'icon-image': 'rocket-15' }}>
-          <Feature coordinates={[28.4685, 49.2344]} />
+          {markers}
         </Layer>
       </Map>
     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 
-const OutputItem = () => {
-  return <p className="output-item">Location name</p>;
+const OutputItem = ({ name }) => {
+  return <p className="output-item">{name}</p>;
 };
 
 export default OutputItem;

@@ -2,21 +2,15 @@ import React from 'react';
 import Search from './Search';
 import OutputItem from './OutputItem';
 
-const SideBar = props => {
+const SideBar = ({ isVisible, places }) => {
   return (
-    <div className={props.isVisible ? 'sidebar sidebar-visible' : 'sidebar'}>
+    <div className={isVisible ? 'sidebar sidebar-visible' : 'sidebar'}>
       <h3>Vinnytsia</h3>
       <Search />
-      <OutputItem />
-      <OutputItem />
-      <OutputItem />
-      <OutputItem />
-      <OutputItem />
-      <OutputItem />
-      <OutputItem />
-      <OutputItem />
-      <OutputItem />
-      <OutputItem />
+      {places !== null &&
+        places.features.map(feature => (
+          <OutputItem key={feature.id} name={feature.place_name} />
+        ))}
     </div>
   );
 };
