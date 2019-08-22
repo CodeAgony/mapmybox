@@ -9,7 +9,7 @@ const SideBar = ({ isVisible, places }) => {
       <Search />
       {places !== null &&
         places.features.map(feature => (
-          <OutputItem key={feature.id} name={feature.place_name} />
+          <OutputItem key={feature.id} name={feature.text} />
         ))}
     </div>
   );
