@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactMapboxGl, { Layer, Marker } from 'react-mapbox-gl';
+import React, { useState } from 'react';
+import ReactMapboxGl, { Layer, Marker, Popup } from 'react-mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 const Map = ReactMapboxGl({
@@ -8,6 +8,12 @@ const Map = ReactMapboxGl({
 });
 
 const MapContainer = ({ places }) => {
+  const [popup, setPopup] = useState([]);
+
+  const onMarkerClick = function(props) {
+    console.log(`marker clicked`);
+    console.log(props.key);
+  };
   // Add marker for each place
   const markers =
     places !== null &&
@@ -15,7 +21,9 @@ const MapContainer = ({ places }) => {
       <Marker
         key={feature.id}
         coordinates={[feature.center[0], feature.center[1]]}
-      />
+        name={feature.name}
+        onClick={onMarkerClick}
+      ></Marker>
     ));
 
   return (
@@ -28,6 +36,7 @@ const MapContainer = ({ places }) => {
           width: '100vw'
         }}
       >
+        <Popup coordinates={[28.4685, 49.2344]}>lol</Popup>
         <Layer
           type="symbol"
           id="marker"
