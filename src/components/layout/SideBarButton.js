@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AppContext from '../../context/appContext';
 
-const SideBarButton = ({ isVisible, setVisibility }) => {
+const SideBarButton = () => {
+  const appContext = useContext(AppContext);
+
+  const { setVisibility } = appContext;
+
   const onClick = () => {
-    isVisible ? setVisibility(false) : setVisibility(true);
+    setVisibility();
   };
   return (
     <div className="sidebar-button" onClick={onClick}>
