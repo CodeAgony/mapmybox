@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Marker } from 'react-mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-const CustomMarker = ({ feature, setPopup, Map }) => {
+import AppContext from '../../context/appContext';
+
+const CustomMarker = ({ feature }) => {
+  const appContext = useContext(AppContext);
+  const { setPopup } = appContext;
+
   const handleClick = () => {
     setPopup(feature);
-    Map.flyTo({ center: [14, 25] });
   };
 
   return (
     <Marker
       coordinates={[feature.center[0], feature.center[1]]}
-      name={feature.name}
-      onMouseDown={{ handleClick }}
+      onClick={handleClick}
     ></Marker>
   );
 };

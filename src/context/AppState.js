@@ -6,9 +6,9 @@ import { GET_PLACES, SET_VISIBILITY, SET_POPUP } from './types';
 
 const AppState = props => {
   const initialState = {
-    places: {},
+    places: null,
     isVisible: false,
-    popup: {}
+    popupData: null
   };
 
   const [state, dispatch] = useReducer(AppReducer, initialState);
@@ -39,22 +39,26 @@ const AppState = props => {
   };
 
   // Set popup
+  const setPopup = feature => {
+    dispatch({
+      type: SET_POPUP,
+      payload: {
+        text: feature.text,
+        location: feature.center,
+        name: feature.place_name
+      }
+    });
+  };
 
   return (
     <AppContext.Provider
       value={{
         places: state.places,
         isVisible: state.isVisible,
+        popupData: state.popupData,
         getPlaces,
-        setVisibility
-        // users: state.users,
-        // user: state.user,
-        // repos: state.repos,
-        // loading: state.loading,
-        // searchUsers,
-        // clearUsers,
-        // getUser,
-        // getUserRepos
+        setVisibility,
+        setPopup
       }}
     >
       {props.children}

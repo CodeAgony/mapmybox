@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import ReactMapboxGl, { Layer, Popup } from 'react-mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import CustomMarker from './CustomMarker';
@@ -12,43 +12,22 @@ const Map = ReactMapboxGl({
 
 const MapContainer = () => {
   const appContext = useContext(AppContext);
-
-  const { places, getPlaces } = appContext;
+  const { places, getPlaces, popupData } = appContext;
 
   useEffect(() => {
     getPlaces();
   }, []);
 
-  const [popup, setPopup] = useState(null);
-  const handleClick = () => {
-    Map.flyTo({ center: [14, 25] });
-    setPopup();
-  };
   // Add marker for each place
-  // const markers =
-  //   places !== null &&
-  //   places.features.map(feature => (
-  //     <CustomMarker
-  //       feature={feature}
-  //       key={feature.id}
-  //       coordinates={[feature.center[0], feature.center[1]]}
-  //       name={feature.name}
-  //       onClick={handleClick}
-  //       Map={Map}
-  //     ></CustomMarker>
-  //   ));
-
-  // const popups = popup !== null && (
-  //   <Popup
-  //     popup={popup}
-  //     places={places}
-  //     coordinates={popup.lngLat}
-  //     anchor={'bottom'}
-  //     offset={10}
-  //   >
-  //     <h5>lol</h5>
-  //   </Popup>
-  // );
+  const markers =
+    places !== null &&
+    places.features.map(feature => (
+      <CustomMarker
+        feature={feature}
+        key={feature.id}
+        coordinates={feature.center}
+      ></CustomMarker>
+    ));
 
   return (
     <div>
@@ -60,13 +39,19 @@ const MapContainer = () => {
           width: '100vw'
         }}
       >
-        {/* {popups} */}
+        {popupData !== null && (
+          <Popup anchor={'bottom'} offset={10} coordinates={popupData.location}>
+            <h5>{popupData.text}</h5>
+            <br />
+            <h6>{popupData.name}</h6>
+          </Popup>
+        )}
         <Layer
           type="symbol"
           id="marker"
           layout={{ 'icon-image': 'restaurant-15' }}
         >
-          {/* {markers} */}
+          {markers}
         </Layer>
       </Map>
     </div>
