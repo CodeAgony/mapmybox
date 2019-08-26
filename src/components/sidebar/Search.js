@@ -3,13 +3,13 @@ import AppContext from '../../context/appContext';
 
 const Search = () => {
   const appContext = useContext(AppContext);
-  const { places, filteredPlaces, filterPlaces } = appContext;
+  const { places, filterPlaces } = appContext;
 
   const text = useRef(null);
 
   const onChange = event => {
     event.preventDefault();
-    places !== null && filterPlaces(text.current.value);
+    filterPlaces(text.current.value);
   };
 
   return (

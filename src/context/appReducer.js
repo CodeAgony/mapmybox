@@ -7,19 +7,24 @@ export default (state, action) => {
         ...state,
         places: action.payload
       };
+
     case FILTER_PLACES:
       return {
         ...state,
-        filteredPlaces: state.places.features.filter(place => {
-          const regex = new RegExp(`${action.payload}`, `gi`);
-          return place.text.match(regex) || place.place_name.match(regex);
-        })
+        filteredPlaces:
+          action.payload.length > 0 &&
+          state.places.filter(place => {
+            const regex = new RegExp(`${action.payload}`, `gi`);
+            return place.text.match(regex) || place.place_name.match(regex);
+          })
       };
+
     case SET_VISIBILITY:
       return {
         ...state,
         isVisible: action.payload
       };
+
     case SET_POPUP:
       return {
         ...state,

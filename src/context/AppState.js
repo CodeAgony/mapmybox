@@ -7,7 +7,7 @@ import { GET_PLACES, SET_VISIBILITY, SET_POPUP, FILTER_PLACES } from './types';
 const AppState = props => {
   const initialState = {
     places: null,
-    filteredPlaces: null,
+    filteredPlaces: [],
     isVisible: false,
     popupData: null
   };
@@ -22,7 +22,7 @@ const AppState = props => {
 
     dispatch({
       type: GET_PLACES,
-      payload: res.data
+      payload: res.data.features
     });
   };
 
