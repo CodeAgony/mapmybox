@@ -45,7 +45,7 @@ const AppState = props => {
       payload: {
         text: place.text,
         location: place.center,
-        name: place.place_name
+        address: place.place_name.slice(place.place_name.indexOf(',') + 1)
       }
     });
   };
