@@ -46,13 +46,7 @@ const MapContainer = () => {
             <h6>{popupData.name}</h6>
           </Popup>
         )}
-        <Layer
-          type="symbol"
-          id="marker"
-          layout={{ 'icon-image': 'restaurant-15' }}
-        >
           {markers}
-        </Layer>
       </Map>
     </div>
   );

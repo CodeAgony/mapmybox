@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Marker } from 'react-mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import Icon from './restaurant-15.svg';
 
 import AppContext from '../../context/appContext';
 
@@ -16,7 +17,9 @@ const CustomMarker = ({ feature }) => {
     <Marker
       coordinates={[feature.center[0], feature.center[1]]}
       onClick={handleClick}
-    ></Marker>
+    >
+      <img src={Icon} className="noselect" alt="" />
+    </Marker>
   );
 };
 
