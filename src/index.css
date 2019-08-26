@@ -85,6 +85,10 @@ body {
 
 }
 
+.noselect {
+	user-select: none
+}
+
 /* .mapboxgl-canvas {
 	position: absolute;
 	top: 0;

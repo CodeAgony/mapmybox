@@ -21,11 +21,11 @@ const MapContainer = () => {
   // Add marker for each place
   const markers =
     places !== null &&
-    places.features.map(feature => (
+    places.features.map(place => (
       <CustomMarker
-        feature={feature}
-        key={feature.id}
-        coordinates={feature.center}
+        place={place}
+        key={place.id}
+        coordinates={place.center}
       ></CustomMarker>
     ));
 
@@ -46,13 +46,7 @@ const MapContainer = () => {
             <h6>{popupData.name}</h6>
           </Popup>
         )}
-        <Layer
-          type="symbol"
-          id="marker"
-          layout={{ 'icon-image': 'restaurant-15' }}
-        >
-          {markers}
-        </Layer>
+        {markers}
       </Map>
     </div>
   );

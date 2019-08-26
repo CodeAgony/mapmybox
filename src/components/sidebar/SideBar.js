@@ -6,15 +6,15 @@ import AppContext from '../../context/appContext';
 
 const SideBar = () => {
   const appContext = useContext(AppContext);
-  const { isVisible, places } = appContext;
+  const { isVisible, places, filteredPlaces } = appContext;
 
   return (
     <div className={isVisible ? 'sidebar sidebar-visible' : 'sidebar'}>
       <h3>Vinnytsia</h3>
       <Search />
-      {places !== null &&
-        places.features.map(feature => (
-          <OutputItem feature={feature} key={feature.id} name={feature.text} />
+      {filteredPlaces === null &&
+        places.features.map(place => (
+          <OutputItem place={place} key={place.id} />
         ))}
     </div>
   );

@@ -1,4 +1,4 @@
-import { GET_PLACES, SET_VISIBILITY, SET_POPUP } from './types';
+import { GET_PLACES, FILTER_PLACES, SET_VISIBILITY, SET_POPUP } from './types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -6,6 +6,14 @@ export default (state, action) => {
       return {
         ...state,
         places: action.payload
+      };
+    case FILTER_PLACES:
+      return {
+        ...state,
+        filteredPlaces: state.places.features.filter(place => {
+          const regex = new RegExp(`${action.payload}`, `gi`);
+          return place.text.match(regex) || place.place_name.match(regex);
+        })
       };
     case SET_VISIBILITY:
       return {

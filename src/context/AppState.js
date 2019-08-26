@@ -2,11 +2,12 @@ import React, { useReducer } from 'react';
 import axios from 'axios';
 import AppContext from './appContext';
 import AppReducer from './appReducer';
-import { GET_PLACES, SET_VISIBILITY, SET_POPUP } from './types';
+import { GET_PLACES, SET_VISIBILITY, SET_POPUP, FILTER_PLACES } from './types';
 
 const AppState = props => {
   const initialState = {
     places: null,
+    filteredPlaces: null,
     isVisible: false,
     popupData: null
   };
@@ -25,6 +26,14 @@ const AppState = props => {
     });
   };
 
+  // Filter places
+  const filterPlaces = value => {
+    dispatch({
+      type: FILTER_PLACES,
+      payload: value
+    });
+  };
+
   // Set sidebar visibility
   const setVisibility = () => {
     state.isVisible
@@ -39,13 +48,13 @@ const AppState = props => {
   };
 
   // Set popup
-  const setPopup = feature => {
+  const setPopup = place => {
     dispatch({
       type: SET_POPUP,
       payload: {
-        text: feature.text,
-        location: feature.center,
-        name: feature.place_name
+        text: place.text,
+        location: place.center,
+        name: place.place_name
       }
     });
   };
@@ -54,9 +63,11 @@ const AppState = props => {
     <AppContext.Provider
       value={{
         places: state.places,
+        filteredPlaces: state.filteredPlaces,
         isVisible: state.isVisible,
         popupData: state.popupData,
         getPlaces,
+        filterPlaces,
         setVisibility,
         setPopup
       }}

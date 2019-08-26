@@ -1,18 +1,17 @@
 import React, { useContext } from 'react';
 import AppContext from '../../context/appContext';
 
-const OutputItem = ({ feature, name }) => {
+const OutputItem = ({ place }) => {
   const appContext = useContext(AppContext);
   const { setPopup } = appContext;
 
   const handleClick = () => {
-    setPopup(feature);
-    console.log(feature);
+    setPopup(place);
   };
 
   return (
     <p className="output-item" onClick={handleClick}>
-      {name}
+      {place.text}
     </p>
   );
 };
