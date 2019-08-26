@@ -39,13 +39,13 @@ const AppState = props => {
   };
 
   // Set popup
-  const setPopup = feature => {
+  const setPopup = place => {
     dispatch({
       type: SET_POPUP,
       payload: {
-        text: feature.text,
-        location: feature.center,
-        name: feature.place_name
+        text: place.text,
+        location: place.center,
+        name: place.place_name
       }
     });
   };

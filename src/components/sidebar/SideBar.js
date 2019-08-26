@@ -13,8 +13,8 @@ const SideBar = () => {
       <h3>Vinnytsia</h3>
       <Search />
       {places !== null &&
-        places.features.map(feature => (
-          <OutputItem feature={feature} key={feature.id} name={feature.text} />
+        places.features.map(place => (
+          <OutputItem place={place} key={place.id} name={place.text} />
         ))}
     </div>
   );
