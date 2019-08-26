@@ -2,11 +2,12 @@ import React, { useReducer } from 'react';
 import axios from 'axios';
 import AppContext from './appContext';
 import AppReducer from './appReducer';
-import { GET_PLACES, SET_VISIBILITY, SET_POPUP } from './types';
+import { GET_PLACES, SET_VISIBILITY, SET_POPUP, FILTER_PLACES } from './types';
 
 const AppState = props => {
   const initialState = {
     places: null,
+    filteredPlaces: null,
     isVisible: false,
     popupData: null
   };
@@ -22,6 +23,14 @@ const AppState = props => {
     dispatch({
       type: GET_PLACES,
       payload: res.data
+    });
+  };
+
+  // Filter places
+  const filterPlaces = value => {
+    dispatch({
+      type: FILTER_PLACES,
+      payload: value
     });
   };
 
@@ -54,9 +63,11 @@ const AppState = props => {
     <AppContext.Provider
       value={{
         places: state.places,
+        filteredPlaces: state.filteredPlaces,
         isVisible: state.isVisible,
         popupData: state.popupData,
         getPlaces,
+        filterPlaces,
         setVisibility,
         setPopup
       }}

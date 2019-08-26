@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import AppContext from '../../context/appContext';
 
-const OutputItem = ({ place, name }) => {
+const OutputItem = ({ place }) => {
   const appContext = useContext(AppContext);
   const { setPopup } = appContext;
 
@@ -11,7 +11,7 @@ const OutputItem = ({ place, name }) => {
 
   return (
     <p className="output-item" onClick={handleClick}>
-      {name}
+      {place.text}
     </p>
   );
 };
