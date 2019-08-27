@@ -2,6 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import ReactMapboxGl, { Popup } from 'react-mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import CustomMarker from './CustomMarker';
+import CustomPopup from './CustomPopup';
 
 import AppContext from '../../context/appContext';
 
@@ -45,12 +46,8 @@ const MapContainer = () => {
           width: '100vw'
         }}
       >
-        {popupData !== null && (
-          <Popup anchor={'bottom'} offset={10} coordinates={popupData.location}>
-            <h5>{popupData.text}</h5>
-            <br />
-            <h6>{popupData.address}</h6>
-          </Popup>
+        {(popupData !== undefined) & (typeof popupData !== 'string') && (
+          <CustomPopup></CustomPopup>
         )}
         {markers()}
       </Map>

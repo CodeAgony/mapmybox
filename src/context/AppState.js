@@ -9,7 +9,7 @@ const AppState = props => {
     places: null,
     filteredPlaces: [],
     isVisible: false,
-    popupData: null
+    popupData: undefined
   };
 
   const [state, dispatch] = useReducer(AppReducer, initialState);
@@ -49,14 +49,16 @@ const AppState = props => {
 
   // Set popup
   const setPopup = place => {
-    dispatch({
-      type: SET_POPUP,
-      payload: {
-        text: place.text,
-        location: place.center,
-        address: place.place_name.slice(place.place_name.indexOf(',') + 1)
-      }
-    });
+    if (state.popupData === undefined || typeof state.popupData === 'object') {
+      dispatch({
+        type: SET_POPUP,
+        payload: {
+          text: place.text,
+          location: place.center,
+          address: place.place_name.slice(place.place_name.indexOf(',') + 1)
+        }
+      });
+    }
   };
 
   return (
