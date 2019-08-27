@@ -49,7 +49,7 @@ const MapContainer = () => {
           <Popup anchor={'bottom'} offset={10} coordinates={popupData.location}>
             <h5>{popupData.text}</h5>
             <br />
-            <h6>{popupData.name}</h6>
+            <h6>{popupData.address}</h6>
           </Popup>
         )}
         {markers()}
