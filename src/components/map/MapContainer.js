@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import ReactMapboxGl, { Layer, Popup } from 'react-mapbox-gl';
+import ReactMapboxGl, { Popup } from 'react-mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import CustomMarker from './CustomMarker';
 
@@ -12,22 +12,28 @@ const Map = ReactMapboxGl({
 
 const MapContainer = () => {
   const appContext = useContext(AppContext);
-  const { places, getPlaces, popupData } = appContext;
+  const { places, getPlaces, popupData, filteredPlaces } = appContext;
 
   useEffect(() => {
     getPlaces();
   }, []);
 
   // Add marker for each place
-  const markers =
-    places !== null &&
-    places.features.map(place => (
-      <CustomMarker
-        place={place}
-        key={place.id}
-        coordinates={place.center}
-      ></CustomMarker>
-    ));
+  const markers = () => {
+    if ((places !== null) & (!filteredPlaces.length > 0)) {
+      return places.map(place => (
+        <CustomMarker place={place} key={place.id} coordinates={place.center} />
+      ));
+    } else if (filteredPlaces.length > 0) {
+      return filteredPlaces.map(place => (
+        <CustomMarker
+          place={place}
+          key={place.id}
+          coordinates={place.center}
+        ></CustomMarker>
+      ));
+    }
+  };
 
   return (
     <div>
@@ -43,10 +49,10 @@ const MapContainer = () => {
           <Popup anchor={'bottom'} offset={10} coordinates={popupData.location}>
             <h5>{popupData.text}</h5>
             <br />
-            <h6>{popupData.address}</h6>
+            <h6>{popupData.name}</h6>
           </Popup>
         )}
-        {markers}
+        {markers()}
       </Map>
     </div>
   );
