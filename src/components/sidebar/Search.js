@@ -3,7 +3,7 @@ import AppContext from '../../context/appContext';
 
 const Search = () => {
   const appContext = useContext(AppContext);
-  const { places, filterPlaces } = appContext;
+  const { filterPlaces } = appContext;
 
   const text = useRef(null);
 
